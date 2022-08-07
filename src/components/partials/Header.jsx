@@ -36,7 +36,7 @@ function Header() {
 
               <li className='nav-item'>
                 <Link className='nav-link' to='/projects'>
-                  Projects
+                  Projects/Education
                 </Link>
               </li>
 
@@ -47,15 +47,13 @@ function Header() {
               </li>
 
               <li className='nav-item'>
-                <Link className='nav-link' to='/references'>
-                  References
-                </Link>
-              </li>
-
-              <li className='nav-item'>
-                <Link className='nav-link' to='/resume'>
+                <a
+                  className='nav-link'
+                  href={process.env.PUBLIC_URL + '/files/Resume-2022.docx'}
+                  download='Resume-2022.docx'
+                >
                   Resume
-                </Link>
+                </a>
               </li>
             </ul>
           </div>

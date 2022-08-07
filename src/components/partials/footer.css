@@ -10,3 +10,17 @@ footer {
 footer p {
   color: #fff;
 }
+
+.footer-content {
+  margin: 2px;
+}
+
+.fa-linkedin {
+  margin-left: 2rem;
+}
+
+.footer-intro {
+  text-align: left;
+  line-height: 1rem;
+  padding: 1px;
+}

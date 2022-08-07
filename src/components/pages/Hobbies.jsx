@@ -35,8 +35,31 @@ export default function Hobbies() {
         key={3}
         id={3}
         img={process.env.PUBLIC_URL + '/images/skydiving.png'}
-        alt={'car-fix'}
-        content={''}
+        alt={'skydiving'}
+        content={
+          'I like to put myself in extreme conditions and identify the process that I can implement' +
+          ' to reduce the stress. When I tried scuba diving, it was hard to dive into the water because ' +
+          'I would keep worrying that my mask would fill-up with salt water and burn my eyes. But after a couple of ' +
+          'failed attempts, I slowly started feeling the moments when water level would get close to my eye level ' +
+          'where I still would have enough time to get it out by tilting my head back and breath the water out.' +
+          ' Each one of these conditions teach me on how to operate under pressure, and focus on enjoying the moment.'
+        }
+      />
+
+      <BlockContainer
+        key={4}
+        id={4}
+        img={process.env.PUBLIC_URL + '/images/doom.jpg'}
+        alt={'video game'}
+        content={
+          'Video games play a huge role in my life since it was the main reason why I wanted keep ' +
+          'on expanding my knowledge because when I first time seen counter strike after playing 2d ' +
+          'games, I was shocked that it was possible to make games in 3D. Also playing WOW with people ' +
+          'online and build friendships 1000 miles away was mind blowing. While I was growing up ' +
+          'there was not that much of regulation on game rating for audience, and because of that ' +
+          'my first video game was DOOM. It was brilliant, heart rate pumping video game with so ' +
+          'many secret doors to discover.'
+        }
       />
     </div>
   );

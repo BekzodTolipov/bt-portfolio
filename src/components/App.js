@@ -4,7 +4,6 @@ import './App.css';
 import About from './pages/About';
 import Hobbies from './pages/Hobbies';
 import Projects from './pages/Projects';
-import References from './pages/References';
 import Footer from './partials/Footer';
 import Header from './partials/Header';
 
@@ -18,14 +17,12 @@ function App() {
 
         <Routes>
           {/* About Page and Home Page goes to About page */}
-          <Route path='/' element={<About />} />
-          <Route path='/about' element={<About />} />
-
+          <Route path='/' element={<Projects />} />
           <Route path='/projects' element={<Projects />} />
 
-          <Route path='/hobbies' element={<Hobbies />} />
+          <Route path='/about' element={<About />} />
 
-          <Route path='/references' element={<References />} />
+          <Route path='/hobbies' element={<Hobbies />} />
         </Routes>
         {/* Routes End */}
       </div>
