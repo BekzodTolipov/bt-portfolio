@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import './header.css';
 
 function Header() {
@@ -23,37 +25,37 @@ function Header() {
           <div className='collapse navbar-collapse' id='navbarNav'>
             <ul className='navbar-nav ms-auto'>
               <li className='nav-item'>
-                <a
+                <Link
                   className='nav-link active'
                   aria-current='page'
-                  href='/about'
+                  to='/about'
                 >
                   About
-                </a>
+                </Link>
               </li>
 
               <li className='nav-item'>
-                <a className='nav-link' href='/projects'>
+                <Link className='nav-link' to='/projects'>
                   Projects
-                </a>
+                </Link>
               </li>
 
               <li className='nav-item'>
-                <a className='nav-link' href='/hobbies'>
+                <Link className='nav-link' to='/hobbies'>
                   Hobbies
-                </a>
+                </Link>
               </li>
 
               <li className='nav-item'>
-                <a className='nav-link' href='/references'>
+                <Link className='nav-link' to='/references'>
                   References
-                </a>
+                </Link>
               </li>
 
               <li className='nav-item'>
-                <a className='nav-link' href='/resume'>
+                <Link className='nav-link' to='/resume'>
                   Resume
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
