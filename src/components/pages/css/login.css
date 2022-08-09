@@ -1,0 +1,15 @@
+.login-form {
+    text-align: center;
+    width: 40%;
+    margin: 120px auto;
+}
+
+.login-form .btn-custom {
+    color: #fff;
+    background-color: #456268;
+}
+
+.login-form h1 {
+    color: #1c7586;
+    font-size: 3rem;
+}

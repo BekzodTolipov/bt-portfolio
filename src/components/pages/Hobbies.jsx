@@ -3,7 +3,7 @@ import BlockContainer from '../helper/BlockContainer';
 
 export default function Hobbies() {
   return (
-    <div>
+    <>
       <BlockContainer
         key={1}
         id={1}
@@ -61,6 +61,6 @@ export default function Hobbies() {
           'many secret doors to discover.'
         }
       />
-    </div>
+    </>
   );
 }

@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 
 import './header.css';
 
-function Header() {
+function Header(props) {
+  //'About', 'Projects', 'Hobbies', 'Login'
+  const linkList = props.logState
+    ? ['About', 'Projects', 'Hobbies', 'Logout']
+    : ['Projects', 'Login'];
+
   return (
     <header className='sticky-top'>
       <nav className='navbar navbar-custom navbar-expand-lg'>
@@ -24,27 +29,19 @@ function Header() {
           </button>
           <div className='collapse navbar-collapse' id='navbarNav'>
             <ul className='navbar-nav ms-auto'>
-              <li className='nav-item'>
-                <Link
-                  className='nav-link active'
-                  aria-current='page'
-                  to='/about'
-                >
-                  About
-                </Link>
-              </li>
-
-              <li className='nav-item'>
-                <Link className='nav-link' to='/projects'>
-                  Projects/Education
-                </Link>
-              </li>
-
-              <li className='nav-item'>
-                <Link className='nav-link' to='/hobbies'>
-                  Hobbies
-                </Link>
-              </li>
+              {linkList.map((link, index) => {
+                return (
+                  <li key={index} className='nav-item'>
+                    <Link
+                      className='nav-link active'
+                      aria-current='page'
+                      to={`/${link.toLowerCase()}`}
+                    >
+                      {link}
+                    </Link>
+                  </li>
+                );
+              })}
 
               <li className='nav-item'>
                 <a
