@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import './css/projects.css';
 
 export default function Projects() {
+  const apiLink = 'https://hidden-tundra-97787.herokuapp.com';
   const [data, setData] = useState({
     projects: [],
     education: [],
@@ -10,8 +11,8 @@ export default function Projects() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const projects = await axios.get('/projects');
-      const education = await axios.get('/education');
+      const projects = await axios.get(apiLink + '/projects');
+      const education = await axios.get(apiLink + '/education');
 
       setData({
         projects: projects.data,
