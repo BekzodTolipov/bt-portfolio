@@ -1,7 +1,7 @@
 import React from 'react';
 import './css/login.css';
 
-export default function Login() {
+export default function Login(props: any) {
   return (
     <>
       <form className='login-form'>

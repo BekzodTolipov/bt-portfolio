@@ -4,7 +4,11 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './components/App';
 import './index.css';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const rootElement = document.getElementById('root');
+
+if(rootElement === null) throw new Error('Root container is missing')
+
+const root = ReactDOM.createRoot(rootElement);
 
 root.render(
   // <React.StrictMode>

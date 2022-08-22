@@ -34,7 +34,7 @@ export default function Projects() {
             </tr>
           </thead>
           <tbody>
-            {data.projects.map((project) => {
+            {data.projects.map((project: any) => {
               return (
                 <tr key={project._id}>
                   <td>
@@ -69,7 +69,7 @@ export default function Projects() {
             </tr>
           </thead>
           <tbody>
-            {data.education.map((ed) => {
+            {data.education.map((ed: any) => {
               return (
                 <tr key={ed._id}>
                   <td>{ed.title}</td>
