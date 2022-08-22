@@ -2,22 +2,50 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import './css/projects.css';
 
+const apiLink = 'https://hidden-tundra-97787.herokuapp.com';
+
+
+function getStorageValue(key, defaultValue) {
+  // getting stored value
+  const saved = localStorage.getItem(key);
+  const initial = saved ? JSON.parse(saved) : null;
+  return initial || defaultValue;
+}
+
+
 export default function Projects() {
-  const apiLink = 'https://hidden-tundra-97787.herokuapp.com';
-  const [data, setData] = useState({
-    projects: [],
-    education: [],
+  const [data, setData] = useState(() => {
+    return getStorageValue('projects', {
+      projects: [],
+      education: [],
+      isFetched: false
+    })
   });
 
   useEffect(() => {
+    
     const fetchData = async () => {
-      const projects = await axios.get(apiLink + '/projects');
-      const education = await axios.get(apiLink + '/education');
+      let projectsFetched = {};
+      const dataStorage = localStorage.getItem('projects');
+      if(dataStorage === null) {
+        const projects = await axios.get(apiLink + '/projects');
+        const education = await axios.get(apiLink + '/education');
+        projectsFetched = { 
+          projects: projects.data, 
+          education: education.data, 
+          isFetched: true 
+        }
 
-      setData({
-        projects: projects.data,
-        education: education.data,
-      });
+        localStorage.setItem('projects', JSON.stringify({
+          projects: projects.data,
+          education: education.data,
+          isFetched: true
+        }));
+      } else {
+        projectsFetched = JSON.parse(dataStorage);
+      }
+
+      setData(projectsFetched);
     };
 
     fetchData();

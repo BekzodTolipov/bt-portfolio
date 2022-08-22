@@ -6,8 +6,8 @@ import './header.css';
 function Header(props) {
   //'About', 'Projects', 'Hobbies', 'Login'
   const linkList = props.logState
-    ? ['About', 'Projects', 'Hobbies', 'Logout']
-    : ['Projects', 'Login'];
+    ? ['About', 'Projects', 'Hobbies', 'Logout', 'Blockbuster']
+    : ['Projects', 'Login', 'Blockbuster'];
 
   return (
     <header className='sticky-top'>

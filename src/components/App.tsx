@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import About from './pages/About';
+import BlockBuster from './pages/BlockBuster/BlockBuster';
 import Hobbies from './pages/Hobbies';
 import Login from './pages/Login';
 import Projects from './pages/Projects';
@@ -22,6 +23,8 @@ function App() {
           {/* About Page and Home Page goes to About page */}
           <Route path='/' element={<Projects />} />
           <Route path='/projects' element={<Projects />} />
+
+          <Route path='/blockbuster' element={<BlockBuster />} />
 
           <Route path='/about' element={<About />} />
 
