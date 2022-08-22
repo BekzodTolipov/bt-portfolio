@@ -1,17 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { getStorageValue, setToStorage } from '../helper/LocalStorage';
 import './css/projects.css';
 
 const apiLink = 'https://hidden-tundra-97787.herokuapp.com';
-
-
-function getStorageValue(key, defaultValue) {
-  // getting stored value
-  const saved = localStorage.getItem(key);
-  const initial = saved ? JSON.parse(saved) : null;
-  return initial || defaultValue;
-}
-
 
 export default function Projects() {
   const [data, setData] = useState(() => {
@@ -25,27 +17,24 @@ export default function Projects() {
   useEffect(() => {
     
     const fetchData = async () => {
-      let projectsFetched = {};
-      const dataStorage = localStorage.getItem('projects');
+      const dataStorage = getStorageValue('projects', null);
+
       if(dataStorage === null) {
         const projects = await axios.get(apiLink + '/projects');
         const education = await axios.get(apiLink + '/education');
-        projectsFetched = { 
-          projects: projects.data, 
-          education: education.data, 
-          isFetched: true 
-        }
 
-        localStorage.setItem('projects', JSON.stringify({
+        setToStorage('projects', JSON.stringify({
           projects: projects.data,
           education: education.data,
           isFetched: true
         }));
-      } else {
-        projectsFetched = JSON.parse(dataStorage);
-      }
 
-      setData(projectsFetched);
+        setData({ 
+          projects: projects.data, 
+          education: education.data, 
+          isFetched: true 
+        });
+      }
     };
 
     fetchData();
