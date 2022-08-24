@@ -111,7 +111,7 @@ export default function TodoApp() {
                                                                         },
                                                                       }} className="input-checkbox" value={item._id + ' ' + todo._id} onChange={deleteItem}/>
                                                                 }
-                                                                label={<p>{item.name}</p>}
+                                                                label={<p className="todo-paragraph">{item.name}</p>}
                                                         />
                                                     </FormGroup>
                                                 </FormControl>
