@@ -1,13 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { CreateNavLink, NavList } from '../helper/NavHelper';
 
 import './header.css';
 
 function Header(props) {
-  //'About', 'Projects', 'Hobbies', 'Login'
-  const linkList = props.logState
-    ? ['About', 'Projects', 'Hobbies', 'Logout', 'Blockbuster']
-    : ['Projects', 'Login', 'Blockbuster'];
+  const linkList = NavList();
 
   return (
     <header className='sticky-top'>
@@ -30,16 +27,8 @@ function Header(props) {
           <div className='collapse navbar-collapse' id='navbarNav'>
             <ul className='navbar-nav ms-auto'>
               {linkList.map((link, index) => {
-                return (
-                  <li key={index} className='nav-item'>
-                    <Link
-                      className='nav-link active'
-                      aria-current='page'
-                      to={`/${link.toLowerCase()}`}
-                    >
-                      {link}
-                    </Link>
-                  </li>
+                return (link.isDisplay &&
+                  CreateNavLink(link, index)
                 );
               })}
 

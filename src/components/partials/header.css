@@ -36,6 +36,24 @@
 .navbar-custom .navbar-nav .nav-link {
     color: rgba(255,255,255,.6);
 }
+
+.navbar-custom .navbar-nav .dropdown-menu {
+    padding: 0;
+    border: none;
+    color: rgba(173, 172, 172, 0.6);
+    background-color: #456268;
+}
+
+.navbar-custom .navbar-nav .dropdown-menu .dropdown-item{
+    color: rgba(255,255,255,.6);
+}
+
+.navbar-custom .navbar-nav .dropdown-menu .dropdown-item:hover{
+    color: #ffffff;
+    background-color: #456268;
+    border: none;
+}
+
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
     color: #ffffff;

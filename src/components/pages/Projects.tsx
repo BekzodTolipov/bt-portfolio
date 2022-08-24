@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { getStorageValue, setToStorage } from '../helper/LocalStorage';
 import './css/projects.css';
 
-const apiLink = 'https://hidden-tundra-97787.herokuapp.com';
+const apiLink = 'https://hidden-tundra-97787.herokuapp.com/api';
 
 export default function Projects() {
   const [data, setData] = useState(() => {

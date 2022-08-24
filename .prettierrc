@@ -9,5 +9,8 @@
     "editor.formatOnSave": true,
     "tabWidth": 4,
     "semi": false,
-    "trailingComma": "es5"
+    "trailingComma": "es5",
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    }
 }
