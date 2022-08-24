@@ -38,7 +38,6 @@ export default function TodoApp() {
 
     const deleteItem = async (event) => {
         const itemData = event.target.value.split(' ');
-        console.log(itemData);
 
         const deleteItemObj = {
             data: {
@@ -62,16 +61,11 @@ export default function TodoApp() {
 
 
     const saveItem = async (event) => {
-        console.log(itemName)
-        console.log(currentTodo)
-
         try {
             const response = await axios.post(apiLink, {
                 listId: currentTodo,
                 itemName
             })
-
-            console.log(response)
 
             if(response.status === 200) {
                 const todoListFetched = await axios.get(apiLink);

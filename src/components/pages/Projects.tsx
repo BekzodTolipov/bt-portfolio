@@ -21,7 +21,7 @@ export default function Projects() {
 
       if(dataStorage === null) {
         const projects = await axios.get(apiLink + '/projects');
-        const education = await axios.get(apiLink + '/education');
+        const education = await axios.get(apiLink + '/educations');
 
         setToStorage('projects', JSON.stringify({
           projects: projects.data,
