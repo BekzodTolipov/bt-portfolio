@@ -1,9 +1,8 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { baseUrl } from '../helper/connection/http';
 import { getStorageValue, setToStorage } from '../helper/LocalStorage';
 import './css/projects.css';
-
-const apiLink = 'https://hidden-tundra-97787.herokuapp.com/api';
 
 export default function Projects() {
   const [data, setData] = useState(() => {
@@ -20,8 +19,8 @@ export default function Projects() {
       const dataStorage = getStorageValue('projects', null);
 
       if(dataStorage === null) {
-        const projects = await axios.get(apiLink + '/projects');
-        const education = await axios.get(apiLink + '/educations');
+        const projects = await axios.get(baseUrl + '/projects');
+        const education = await axios.get(baseUrl + '/educations');
 
         setToStorage('projects', JSON.stringify({
           projects: projects.data,
