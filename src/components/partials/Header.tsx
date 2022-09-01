@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { CreateNavLink, NavList } from '../helper/NavHelper';
 
 import './header.css';
 
 function Header(props) {
-  const linkList = NavList();
+  const [isLoggedIn, setIsLoggedIn] = useState(props.logState);
+  let linkList = NavList(isLoggedIn);
+
+  useEffect(() => {
+    setIsLoggedIn(props.logState);
+  }, [props.logState]);
+
+  const _handleCollapse = () => {
+    props.setShow(!props.isShow);
+  };
 
   return (
     <header className='sticky-top'>
@@ -14,22 +23,32 @@ function Header(props) {
             BT
           </a>
           <button
-            className='navbar-toggler ml-auto custom-toggler'
+            className={
+              !props.isShow
+                ? 'navbar-toggler ml-auto custom-toggler collapsed'
+                : 'navbar-toggler ml-auto custom-toggler'
+            }
             type='button'
             data-bs-toggle='collapse'
             data-bs-target='#navbarNav'
             aria-controls='navbarNav'
-            aria-expanded='false'
+            aria-expanded={props.isShow}
             aria-label='Toggle navigation'
+            onClick={_handleCollapse}
           >
             <span className='navbar-toggler-icon'></span>
           </button>
-          <div className='collapse navbar-collapse' id='navbarNav'>
+          <div
+            className={
+              props.isShow
+                ? 'collapse navbar-collapse show'
+                : 'collapse navbar-collapse'
+            }
+            id='navbarNav'
+          >
             <ul className='navbar-nav ms-auto'>
               {linkList.map((link, index) => {
-                return (link.isDisplay &&
-                  CreateNavLink(link, index)
-                );
+                return link.isDisplay && CreateNavLink(link, index);
               })}
 
               <li className='nav-item'>

@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
+import OutsideClickHandler from 'react-outside-click-handler';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import ChessApp from './chess-app/Chess-App';
 import About from './pages/About';
 import Hobbies from './pages/Hobbies';
 import Login from './pages/Login';
@@ -11,10 +13,17 @@ import TodoApp from './todo-app/TodoApp';
 
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isShow, setShow] = useState(false);
 
   return (
     <div className='app-container'>
-      <Header logState={isLoggedIn} />
+      <OutsideClickHandler
+        onOutsideClick={() => {
+          setShow(false);
+        }}
+      >
+        <Header logState={isLoggedIn} isShow={isShow} setShow={setShow} />
+      </OutsideClickHandler>
 
       <div className='app-body'>
         {/* Routes Start */}
@@ -24,7 +33,9 @@ function App() {
           <Route path='/' element={<Projects />} />
           <Route path='/projects' element={<Projects />} />
 
+          {/* Projects */}
           <Route path='/todo-app' element={<TodoApp />} />
+          <Route path='/chess-game' element={<ChessApp />} />
 
           {/* TODO: need to figure out pagination before releasing */}
           {/* <Route path='/blockbuster' element={<BlockBuster />} /> */}
@@ -33,7 +44,12 @@ function App() {
 
           <Route path='/hobbies' element={<Hobbies />} />
 
-          <Route path='/login' element={<Login loginState={setLoggedIn} />} />
+          {!isLoggedIn && (
+            <Route
+              path='/login'
+              element={<Login setLoginState={setLoggedIn} />}
+            />
+          )}
         </Routes>
         {/* Routes End */}
       </div>
