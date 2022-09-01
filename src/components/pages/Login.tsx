@@ -47,7 +47,6 @@ export default function Login(props: any) {
     const emailErrorMsg = isEmailValid(inputResult.email?.toString());
     let passwordErrorMsg = '';
     if (isRegister) {
-      console.log(isRegister);
       passwordErrorMsg = isPasswordMatch(
         inputResult.password?.toString(),
         inputResult.confirmPassword?.toString()
@@ -56,7 +55,6 @@ export default function Login(props: any) {
 
     if (!Boolean(emailErrorMsg) && !Boolean(passwordErrorMsg)) {
       setIsValid(true);
-      //TODO: DB call here
       const isSuccessLogin = isRegister
         ? await registerApiCall(inputResult)
         : await loginApiCall(inputResult);
@@ -77,8 +75,8 @@ export default function Login(props: any) {
     <ThemeProvider theme={theme}>
       <Container
         sx={{
-          backgroundColor: 'rgba(79, 214, 198, 0.9)',
-          padding: '0 10px 10px 10px',
+          backgroundColor: '#456268',
+          padding: '0 15px 15px 25px',
         }}
         component='main'
         maxWidth='xs'
@@ -110,6 +108,9 @@ export default function Login(props: any) {
                   backgroundColor: '#bcc2c0',
                 },
               }}
+              InputLabelProps={{
+                style: { fontWeight: 'bold' },
+              }}
               error={!isValid}
               helperText={!isValid && errorMsg.email}
               margin='normal'
@@ -126,6 +127,9 @@ export default function Login(props: any) {
                 style: {
                   backgroundColor: '#bcc2c0',
                 },
+              }}
+              InputLabelProps={{
+                style: { fontWeight: 'bold' },
               }}
               error={!isValid}
               helperText={!isValid && errorMsg.password}
@@ -145,6 +149,9 @@ export default function Login(props: any) {
                     backgroundColor: '#bcc2c0',
                   },
                 }}
+                InputLabelProps={{
+                  style: { fontWeight: 'bold' },
+                }}
                 error={!isValid}
                 helperText={!isValid && errorMsg.password}
                 margin='normal'
@@ -163,17 +170,18 @@ export default function Login(props: any) {
               variant='contained'
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              {isRegister ? 'Sign Up' : 'Sign In'}
             </Button>
             <Grid container>
               <Grid item xs>
-                <Link href='#' variant='body2'>
+                <Link href='#' sx={{ color: 'white' }} variant='body2'>
                   Forgot password?
                 </Link>
               </Grid>
               <Grid item>
                 <Link
                   href='#'
+                  sx={{ color: 'white' }}
                   variant='body2'
                   onClick={() => {
                     setIsRegister(!isRegister);
@@ -188,80 +196,4 @@ export default function Login(props: any) {
       </Container>
     </ThemeProvider>
   );
-  // const [isLoggedIn, setLoggedIn] = useState(props.isLoggedIn);
-  // const [isRegister, setRegister] = useState(true);
-
-  // // useEffect(() => {
-  // //   props.setLoginState()
-  // // }, [props.isLoggedIn])
-
-  // return (
-  //   <>
-  //     {isRegister && (
-  //       <form className='login-form'>
-  //         <h1 className='h3 mb-3 fw-normal'>Please sign in</h1>
-
-  //         <div className='form-floating'>
-  //           <input
-  //             type='email'
-  //             className='form-control'
-  //             id='floatingInput'
-  //             placeholder='name@example.com'
-  //           />
-  //           <label htmlFor='floatingInput'>Email address</label>
-  //         </div>
-  //         <div className='form-floating'>
-  //           <input
-  //             type='password'
-  //             className='form-control'
-  //             id='floatingPassword'
-  //             placeholder='Password'
-  //           />
-  //           <label htmlFor='floatingPassword'>Password</label>
-  //         </div>
-  //         <button className='w-100 btn btn-lg btn-custom' type='submit'>
-  //           Sign in
-  //         </button>
-  //       </form>
-
-  //     )}
-
-  //     {!isRegister && (
-  //       <form className='login-form'>
-  //         <h1 className='h3 mb-3 fw-normal'>Please Register</h1>
-
-  //         <div className='form-floating'>
-  //           <input
-  //             type='email'
-  //             className='form-control'
-  //             id='floatingInput'
-  //             placeholder='name@example.com'
-  //           />
-  //           <label htmlFor='floatingInput'>Email address</label>
-  //         </div>
-  //         <div className='form-floating'>
-  //           <input
-  //             type='password'
-  //             className='form-control'
-  //             id='password'
-  //             placeholder='Password'
-  //           />
-  //           <label htmlFor='password'>Password</label>
-  //         </div>
-  //         <div className='form-floating'>
-  //           <input
-  //             type='password'
-  //             className='form-control'
-  //             id='c-password'
-  //             placeholder='Password'
-  //           />
-  //           <label htmlFor='c-password'>Confirm Password</label>
-  //         </div>
-  //         <button className='w-100 btn btn-lg btn-custom' type='submit'>
-  //           Sign Up
-  //         </button>
-  //       </form>
-  //     )}
-  //   </>
-  // );
 }

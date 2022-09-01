@@ -42,8 +42,6 @@ const TodoPicklist = (props) => {
           return todo.name === newTodo;
         });
 
-        console.log(pickAddedTodo);
-
         props.setPickedTodo({
           data: pickAddedTodo[0],
           _callback: _callbackToDelete,
@@ -92,8 +90,14 @@ const TodoPicklist = (props) => {
     }
   };
 
+  const _handleEnterKey = (e) => {
+    if (e.key === 'Enter') {
+      _handleSaveNewTodo(e);
+    }
+  };
+
   return (
-    <div className='dropdown'>
+    <div className='picklist-menu'>
       <Grid container alignItems='center' spacing={2} columns={1}>
         <Grid item xs={12} sm={12} md={12} lg={2} xl={2}>
           <Button
@@ -121,6 +125,7 @@ const TodoPicklist = (props) => {
             id='new-list-field'
             label='New List'
             variant='standard'
+            onKeyDown={_handleEnterKey}
             onChange={_handleTextField}
             value={newTodo}
           />

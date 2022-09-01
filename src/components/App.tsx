@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import ChessApp from './chess-app/Chess-App';
 import About from './pages/About';
 import Hobbies from './pages/Hobbies';
 import Login from './pages/Login';
@@ -22,7 +21,12 @@ function App() {
           setShow(false);
         }}
       >
-        <Header logState={isLoggedIn} isShow={isShow} setShow={setShow} />
+        <Header
+          setLogState={setLoggedIn}
+          logState={isLoggedIn}
+          isShow={isShow}
+          setShow={setShow}
+        />
       </OutsideClickHandler>
 
       <div className='app-body'>
@@ -35,7 +39,7 @@ function App() {
 
           {/* Projects */}
           <Route path='/todo-app' element={<TodoApp />} />
-          <Route path='/chess-game' element={<ChessApp />} />
+          {/* <Route path='/chess-game' element={<ChessApp />} /> */}
 
           {/* TODO: need to figure out pagination before releasing */}
           {/* <Route path='/blockbuster' element={<BlockBuster />} /> */}

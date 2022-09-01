@@ -5,7 +5,7 @@ import './header.css';
 
 function Header(props) {
   const [isLoggedIn, setIsLoggedIn] = useState(props.logState);
-  let linkList = NavList(isLoggedIn);
+  let linkList = NavList(isLoggedIn, props.setLogState);
 
   useEffect(() => {
     setIsLoggedIn(props.logState);

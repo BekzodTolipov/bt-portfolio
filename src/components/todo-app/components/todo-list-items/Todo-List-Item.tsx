@@ -30,8 +30,6 @@ const TodoListItems = (props) => {
       if (response.status === 200) {
         let updatedData = { ...currentTodo };
 
-        console.log(response.data);
-
         updatedData.items = response.data;
         setCurrentTodo(updatedData);
         setItemName('');
@@ -58,7 +56,7 @@ const TodoListItems = (props) => {
         const itemsAfterDelete = currentTodo?.items.filter(
           (item) => item._id !== event.target.value
         );
-        console.log(currentTodo);
+
         const afterUpdate: TodoListInterface = {
           _id: currentTodo?._id,
           items: itemsAfterDelete ? itemsAfterDelete : [],
@@ -72,6 +70,12 @@ const TodoListItems = (props) => {
     }
   };
 
+  const _handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      saveItem(e);
+    }
+  };
+
   return (
     <>
       {currentTodo && (
@@ -81,16 +85,15 @@ const TodoListItems = (props) => {
           {!props.isLoading && (
             <div key={currentTodo._id}>
               <div className='box' id='heading'>
-                <h1>
-                  {currentTodo.name}
-                  <button
+                <div id='heading-content'>
+                  <h1 className='item-title'>{currentTodo.name}</h1>
+                  <i
+                    className='fa-solid fa-trash fa-xl removeItem'
                     onClick={() => {
                       props.pickedTodo._callback(currentTodo._id);
                     }}
-                  >
-                    -
-                  </button>
-                </h1>
+                  ></i>
+                </div>
               </div>
 
               <div className='box'>
@@ -124,15 +127,19 @@ const TodoListItems = (props) => {
 
                 <div className='item'>
                   <input
+                    className='item-input'
+                    autoFocus
                     placeholder='New Item'
                     type='text'
                     name='new_todo_item'
+                    value={itemName}
+                    onKeyDown={_handleKeyDown}
                     onChange={(e) => {
                       setItemName(e.target.value);
                     }}
                   />
-                  <button onClick={saveItem} name='list'>
-                    +
+                  <button className='add-item' onClick={saveItem} name='list'>
+                    <i className='fa-solid fa-plus'></i>
                   </button>
                 </div>
               </div>

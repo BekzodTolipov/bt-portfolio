@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function NavList(isLoggedIn: boolean) {
+function NavList(isLoggedIn: boolean, setLogState) {
   return [
     {
       name: 'About',
@@ -10,7 +10,7 @@ function NavList(isLoggedIn: boolean) {
     },
     {
       name: 'Projects',
-      subList: ['Todo-App', 'Chess-Game'],
+      subList: ['Todo-App'],
       isDisplay: true,
     },
     {
@@ -28,6 +28,7 @@ function NavList(isLoggedIn: boolean) {
       name: 'Logout',
       subList: [],
       isDisplay: isLoggedIn,
+      onClick: setLogState,
     },
     {
       name: 'Login',
@@ -40,11 +41,20 @@ function NavList(isLoggedIn: boolean) {
 function CreateNavLink(link, index: any) {
   function withoutSubList() {
     return (
-      <li key={index} className='nav-item'>
+      <li
+        onClick={() => {
+          if (link.onClick) {
+            localStorage.removeItem('user');
+            link.onClick(false);
+          }
+        }}
+        key={index}
+        className='nav-item'
+      >
         <Link
           className={index === 0 ? 'nav-link active' : 'nav-link'}
           aria-current='page'
-          to={`/${link.name.toLowerCase()}`}
+          to={getLink(link.name)}
         >
           {link.name}
         </Link>
@@ -81,6 +91,14 @@ function CreateNavLink(link, index: any) {
   }
 
   return link.subList.length === 0 ? withoutSubList() : withSubList();
+}
+
+function getLink(name: string) {
+  if (name.toLowerCase() === 'logout') {
+    return '/';
+  }
+
+  return `/${name.toLowerCase()}`;
 }
 
 export { NavList, CreateNavLink };
