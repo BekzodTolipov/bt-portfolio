@@ -52,7 +52,7 @@ function Header(props) {
             }
             id='navbarNav'
           >
-            <ul className='navbar-nav right-aligned'>
+            <ul className='navbar-nav ms-auto right-aligned'>
               {linkList.map((link, index) => {
                 return link.isDisplay && CreateNavLink(link, index);
               })}
