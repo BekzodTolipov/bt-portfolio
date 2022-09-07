@@ -1,37 +1,39 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { baseUrl } from '../helper/connection/http';
-import { getStorageValue, setToStorage } from '../helper/LocalStorage';
-import './css/projects.css';
+import { baseUrl } from '../../../helper/connection/http';
+import { getStorageValue, setToStorage } from '../../../helper/LocalStorage';
+import './projects.css';
 
 export default function Projects() {
   const [data, setData] = useState(() => {
     return getStorageValue('projects', {
       projects: [],
       education: [],
-      isFetched: false
-    })
+      isFetched: false,
+    });
   });
 
   useEffect(() => {
-    
     const fetchData = async () => {
       const dataStorage = getStorageValue('projects', null);
 
-      if(dataStorage === null) {
+      if (dataStorage === null) {
         const projects = await axios.get(baseUrl + '/projects');
         const education = await axios.get(baseUrl + '/educations');
 
-        setToStorage('projects', JSON.stringify({
+        setToStorage(
+          'projects',
+          JSON.stringify({
+            projects: projects.data,
+            education: education.data,
+            isFetched: true,
+          })
+        );
+
+        setData({
           projects: projects.data,
           education: education.data,
-          isFetched: true
-        }));
-
-        setData({ 
-          projects: projects.data, 
-          education: education.data, 
-          isFetched: true 
+          isFetched: true,
         });
       }
     };

@@ -58,3 +58,18 @@
 .navbar-custom .nav-item:hover .nav-link {
     color: #ffffff;
 }
+
+.right-aligned {
+    text-align: right;
+}
+
+.menu-item {
+    margin-top: 1rem;
+    width: 50%;
+}
+
+.container {
+    padding-right: 0;
+    padding-left: 0;
+    max-width: 720px;;
+}

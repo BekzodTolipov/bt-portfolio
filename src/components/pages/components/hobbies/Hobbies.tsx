@@ -1,5 +1,5 @@
 import React from 'react';
-import BlockContainer from '../helper/BlockContainer';
+import BlockContainer from '../../../helper/BlockContainer';
 
 export default function Hobbies() {
   return (

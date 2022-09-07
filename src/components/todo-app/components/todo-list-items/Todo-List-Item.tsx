@@ -5,9 +5,11 @@ import {
   FormGroup,
 } from '@mui/material';
 import { pink } from '@mui/material/colors';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { baseUrl } from '../../../helper/connection/http';
+import {
+  deleteListItem,
+  saveListItem,
+} from '../../../helper/data/todolist/todolist.data';
 import { TodoListInterface } from '../interface/Todo-Interface';
 import './todo-list-item.css';
 
@@ -22,10 +24,7 @@ const TodoListItems = (props) => {
   // Save new item into current todo list
   const saveItem = async (event) => {
     try {
-      const response = await axios.post(baseUrl + 'todo/todo-list', {
-        listId: currentTodo && currentTodo._id,
-        itemName,
-      });
+      const response = await saveListItem(props.isAuth, currentTodo, itemName);
 
       if (response.status === 200) {
         let updatedData = { ...currentTodo };
@@ -40,17 +39,11 @@ const TodoListItems = (props) => {
   };
 
   const deleteItem = async (event) => {
-    const deleteItemObj = {
-      data: {
-        itemId: event.target.value,
-        listId: currentTodo && currentTodo._id,
-      },
-    };
-
     try {
-      const response = await axios.delete(
-        baseUrl + 'todo/todo-list',
-        deleteItemObj
+      const response = await deleteListItem(
+        props.isAuth,
+        event.target.value,
+        currentTodo._id
       );
       if (response.status === 200) {
         const itemsAfterDelete = currentTodo?.items.filter(

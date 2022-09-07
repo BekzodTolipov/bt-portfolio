@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function NavList(isLoggedIn: boolean, setLogState) {
+function NavList(isLoggedIn: boolean, logoutProcess) {
   return [
     {
       name: 'About',
@@ -28,7 +28,7 @@ function NavList(isLoggedIn: boolean, setLogState) {
       name: 'Logout',
       subList: [],
       isDisplay: isLoggedIn,
-      onClick: setLogState,
+      onClick: logoutProcess,
     },
     {
       name: 'Login',
@@ -75,7 +75,10 @@ function CreateNavLink(link, index: any) {
         >
           {link.name}
         </a>
-        <ul className='dropdown-menu' aria-labelledby={link.name + 'Dropdown'}>
+        <ul
+          className='dropdown-menu right-aligned'
+          aria-labelledby={link.name + 'Dropdown'}
+        >
           {link.subList.map((sub, index) => {
             return (
               <li key={link.name + index}>

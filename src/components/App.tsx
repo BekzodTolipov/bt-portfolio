@@ -1,11 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import OutsideClickHandler from 'react-outside-click-handler';
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import About from './pages/About';
-import Hobbies from './pages/Hobbies';
-import Login from './pages/Login';
-import Projects from './pages/Projects';
+import { isAuthenticated } from './helper/connection/authentication';
+import About from './pages/components/about/About';
+import Hobbies from './pages/components/hobbies/Hobbies';
+import Login from './pages/components/login/Login';
+import ResetPassword from './pages/components/password-reset/Reset-Password';
+import Projects from './pages/components/project-education/Projects';
 import Footer from './partials/Footer';
 import Header from './partials/Header';
 import TodoApp from './todo-app/TodoApp';
@@ -13,6 +15,15 @@ import TodoApp from './todo-app/TodoApp';
 function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
   const [isShow, setShow] = useState(false);
+
+  useEffect(() => {
+    const checkLocal = async () => {
+      const isAuth = await isAuthenticated();
+      setLoggedIn(isAuth);
+    };
+
+    checkLocal();
+  });
 
   return (
     <div className='app-container'>
@@ -23,7 +34,7 @@ function App() {
       >
         <Header
           setLogState={setLoggedIn}
-          logState={isLoggedIn}
+          isAuth={isLoggedIn}
           isShow={isShow}
           setShow={setShow}
         />
@@ -38,7 +49,7 @@ function App() {
           <Route path='/projects' element={<Projects />} />
 
           {/* Projects */}
-          <Route path='/todo-app' element={<TodoApp />} />
+          <Route path='/todo-app' element={<TodoApp isAuth={isLoggedIn} />} />
           {/* <Route path='/chess-game' element={<ChessApp />} /> */}
 
           {/* TODO: need to figure out pagination before releasing */}
@@ -54,6 +65,8 @@ function App() {
               element={<Login setLoginState={setLoggedIn} />}
             />
           )}
+
+          <Route path='/reset-password/:token' element={<ResetPassword />} />
         </Routes>
         {/* Routes End */}
       </div>

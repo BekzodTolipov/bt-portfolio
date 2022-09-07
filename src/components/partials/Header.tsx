@@ -4,12 +4,18 @@ import { CreateNavLink, NavList } from '../helper/NavHelper';
 import './header.css';
 
 function Header(props) {
-  const [isLoggedIn, setIsLoggedIn] = useState(props.logState);
-  let linkList = NavList(isLoggedIn, props.setLogState);
+  const [isLoggedIn, setIsLoggedIn] = useState(props.isAuth);
+
+  const logoutProcess = () => {
+    props.setLogState();
+    localStorage.removeItem('user');
+  };
+
+  let linkList = NavList(isLoggedIn, logoutProcess);
 
   useEffect(() => {
-    setIsLoggedIn(props.logState);
-  }, [props.logState]);
+    setIsLoggedIn(props.isAuth);
+  }, [props.isAuth]);
 
   const _handleCollapse = () => {
     props.setShow(!props.isShow);
@@ -18,7 +24,7 @@ function Header(props) {
   return (
     <header className='sticky-top'>
       <nav className='navbar navbar-custom navbar-expand-lg'>
-        <div className='container-fluid'>
+        <div className='container'>
           <a className='navbar-brand' href='/'>
             BT
           </a>
@@ -41,12 +47,12 @@ function Header(props) {
           <div
             className={
               props.isShow
-                ? 'collapse navbar-collapse show'
+                ? 'collapse navbar-collapse show menu-item'
                 : 'collapse navbar-collapse'
             }
             id='navbarNav'
           >
-            <ul className='navbar-nav ms-auto'>
+            <ul className='navbar-nav right-aligned'>
               {linkList.map((link, index) => {
                 return link.isDisplay && CreateNavLink(link, index);
               })}

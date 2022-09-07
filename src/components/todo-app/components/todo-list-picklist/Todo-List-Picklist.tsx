@@ -1,7 +1,11 @@
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import { Button, Grid, Menu, MenuItem, TextField } from '@mui/material';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { baseUrl } from '../../../helper/connection/http';
+import {
+  deleteTodoList,
+  getTodoList,
+  saveTodoList,
+} from '../../../helper/data/todolist/todolist.data';
 import { TodoListInterface } from '../interface/Todo-Interface';
 import './todo-list-picklist.css';
 
@@ -13,13 +17,13 @@ const TodoPicklist = (props) => {
   useEffect(() => {
     const fetchTodoList = async () => {
       props.setLoading(true);
-      const todoListFetched = await axios.get(baseUrl + 'todo/todo-list');
+      const todoListFetched = await getTodoList(props.isAuth);
       setTodoList(todoListFetched.data);
       props.setLoading(false);
     };
 
     fetchTodoList();
-  }, []);
+  }, [props.isAuth]);
 
   const open = Boolean(anchorEl);
   const handleDropdownClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -32,9 +36,7 @@ const TodoPicklist = (props) => {
 
   const _handleSaveNewTodo = async (event) => {
     try {
-      const response = await axios.post(baseUrl + 'todo/', {
-        newTodoListName: newTodo,
-      });
+      const response = await saveTodoList(props.isAuth, newTodo);
 
       if (response.status === 200) {
         setTodoList(response.data);
@@ -66,14 +68,8 @@ const TodoPicklist = (props) => {
   };
 
   const _callbackToDelete = async (id: string) => {
-    const deleteListObj = {
-      data: {
-        listId: id,
-      },
-    };
-
     try {
-      const response = await axios.delete(baseUrl + 'todo/', deleteListObj);
+      const response = await deleteTodoList(props.isAuth, id);
       if (response.status === 200) {
         props.setPickedTodo({
           data: null,
@@ -106,6 +102,7 @@ const TodoPicklist = (props) => {
             aria-haspopup='true'
             aria-expanded={open ? 'true' : undefined}
             onClick={handleDropdownClick}
+            endIcon={<KeyboardArrowDownIcon />}
           >
             Todo List
           </Button>
@@ -141,29 +138,32 @@ const TodoPicklist = (props) => {
           </Button>
         </Grid>
 
-        <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
-          <Menu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={handleDropdownClose}
-            MenuListProps={{
-              'aria-labelledby': 'basic-button',
-            }}
-          >
-            {todoList.map((list: TodoListInterface, index) => {
-              return (
-                <MenuItem
-                  key={list._id}
-                  onClick={() => {
-                    pickTodo(list);
-                  }}
-                >
-                  {list.name}
-                </MenuItem>
-              );
-            })}
-          </Menu>
-        </Grid>
+        {todoList.length > 0 && (
+          <Grid item xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Menu
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleDropdownClose}
+              anchorOrigin={{ vertical: 'bottom', horizontal: 'center' }}
+              MenuListProps={{
+                'aria-labelledby': 'basic-button',
+              }}
+            >
+              {todoList.map((list: TodoListInterface, index) => {
+                return (
+                  <MenuItem
+                    key={list._id}
+                    onClick={() => {
+                      pickTodo(list);
+                    }}
+                  >
+                    {list.name}
+                  </MenuItem>
+                );
+              })}
+            </Menu>
+          </Grid>
+        )}
       </Grid>
     </div>
   );
