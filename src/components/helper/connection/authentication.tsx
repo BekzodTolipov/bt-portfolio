@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { verifyAccessTokenUri } from './api-links';
-import { baseUrl } from './http';
+import { baseUrl } from './user-api-calls';
 
 export const isAuthenticated = async (): Promise<boolean> => {
   const user = localStorage.getItem('user');

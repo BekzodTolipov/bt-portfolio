@@ -41,3 +41,19 @@ export const deleteItemFromListUri = (loginState: boolean) => {
 export const verifyAccessTokenUri = () => {
   return 'users/user/verifyToken';
 };
+
+export const getHeaders = (isAuth) => {
+  let headers = {
+    Authorization: '',
+  };
+
+  if (isAuth) {
+    const user = localStorage.getItem('user');
+    if (user) {
+      const userJson = JSON.parse(user);
+      headers.Authorization = userJson.accessToken;
+    }
+  }
+
+  return headers;
+};

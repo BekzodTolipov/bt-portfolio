@@ -14,14 +14,14 @@ export default function TodoApp(props) {
   return (
     <Box className='todoAppBox' sx={{ flexGrow: 1, width: '100%' }}>
       <Grid container alignItems='center' spacing={2}>
-        <Grid item xs={12} sm={12} md={12} lg={2}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           <TodoPicklist
             setPickedTodo={setCurrentTodo}
             setLoading={setLoading}
             isAuth={props.isAuth}
           />
         </Grid>
-        <Grid item xs={12} sm={12} md={12} lg={10}>
+        <Grid item xs={12} sm={12} md={12} lg={12}>
           {currentTodo.data && (
             <TodoListItems
               pickedTodo={currentTodo}

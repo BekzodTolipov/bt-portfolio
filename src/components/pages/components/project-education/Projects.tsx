@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { baseUrl } from '../../../helper/connection/http';
+import { baseUrl } from '../../../helper/connection/user-api-calls';
 import { getStorageValue, setToStorage } from '../../../helper/LocalStorage';
 import './projects.css';
 

@@ -23,7 +23,7 @@ import {
   loginApiCall,
   LOGIN_TYPE,
   registerApiCall,
-} from '../../../helper/connection/http';
+} from '../../../helper/connection/user-api-calls';
 import {
   ERROR_MESSAGE,
   isEmailValid,

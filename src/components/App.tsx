@@ -4,6 +4,8 @@ import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { isAuthenticated } from './helper/connection/authentication';
 import About from './pages/components/about/About';
+import PurchaseConfirmation from './pages/components/donation/PurchaseConfirmation';
+import Support from './pages/components/donation/Support';
 import Hobbies from './pages/components/hobbies/Hobbies';
 import Login from './pages/components/login/Login';
 import ResetPassword from './pages/components/password-reset/Reset-Password';
@@ -44,12 +46,19 @@ function App() {
         {/* Routes Start */}
 
         <Routes>
-          {/* About Page and Home Page goes to About page */}
+          {/* About  */}
           <Route path='/' element={<Projects />} />
           <Route path='/projects' element={<Projects />} />
 
-          {/* Projects */}
+          {/* Todo App */}
           <Route path='/todo-app' element={<TodoApp isAuth={isLoggedIn} />} />
+
+          <Route path='/support' element={<Support />} />
+
+          <Route
+            path='/stripe-checkout/:purchaseResult'
+            element={<PurchaseConfirmation />}
+          />
           {/* <Route path='/chess-game' element={<ChessApp />} /> */}
 
           {/* TODO: need to figure out pagination before releasing */}

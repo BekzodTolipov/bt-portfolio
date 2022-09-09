@@ -10,7 +10,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React, { useState } from 'react';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { useNavigate, useParams } from 'react-router-dom';
-import { resetPasswordApiCall } from '../../../helper/connection/http';
+import { resetPasswordApiCall } from '../../../helper/connection/user-api-calls';
 import { isPasswordMatch } from '../../../helper/validation/login-validation';
 
 const theme = createTheme({

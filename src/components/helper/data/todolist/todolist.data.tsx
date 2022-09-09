@@ -2,11 +2,12 @@ import axios from 'axios';
 import {
   deleteItemFromListUri,
   deleteTodoListUri,
+  getHeaders,
   getTodoListUri,
   saveItemToListUri,
   saveTodoListUri,
 } from '../../connection/api-links';
-import { baseUrl } from '../../connection/http';
+import { baseUrl } from '../../connection/user-api-calls';
 
 export const getTodoList = async (isAuth) => {
   try {
@@ -85,20 +86,4 @@ export const deleteListItem = async (isAuth, itemId, listId) => {
   } catch (error) {
     return { status: 400 };
   }
-};
-
-const getHeaders = (isAuth) => {
-  let headers = {
-    Authorization: '',
-  };
-
-  if (isAuth) {
-    const user = localStorage.getItem('user');
-    if (user) {
-      const userJson = JSON.parse(user);
-      headers.Authorization = userJson.accessToken;
-    }
-  }
-
-  return headers;
 };

@@ -1,10 +1,12 @@
 {
     "compilerOptions": {
-      "module": "commonjs",
       "noImplicitAny": true,
       "removeComments": true,
       "preserveConstEnums": true,
-      "sourceMap": true
+      "sourceMap": true,
+      "module": "ES6",
+    "jsx": "preserve",
+    "checkJs": true
     },
     "files": [
       "core.ts",

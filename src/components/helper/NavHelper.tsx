@@ -24,6 +24,7 @@ function NavList(isLoggedIn: boolean, logoutProcess) {
       subList: [],
       isDisplay: false,
     },
+
     {
       name: 'Logout',
       subList: [],
@@ -34,6 +35,11 @@ function NavList(isLoggedIn: boolean, logoutProcess) {
       name: 'Login',
       subList: [],
       isDisplay: !isLoggedIn,
+    },
+    {
+      name: 'Support',
+      subList: [],
+      isDisplay: true,
     },
   ];
 }
