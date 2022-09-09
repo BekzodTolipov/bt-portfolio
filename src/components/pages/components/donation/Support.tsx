@@ -83,10 +83,9 @@ export default function Support() {
               ))}
             </TableBody>
           </Table>
+          <button onClick={refreshTable}>Refresh</button>
         </TableContainer>
       )}
-
-      <button onClick={refreshTable}>Refresh</button>
     </>
   );
 }

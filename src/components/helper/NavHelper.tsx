@@ -39,7 +39,7 @@ function NavList(isLoggedIn: boolean, logoutProcess) {
     {
       name: 'Support',
       subList: [],
-      isDisplay: true,
+      isDisplay: isLoggedIn,
     },
   ];
 }
