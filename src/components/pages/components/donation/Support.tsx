@@ -13,6 +13,7 @@ import {
   redirectToCheckout,
   setupSession,
 } from '../../../helper/data/stripe/stipe';
+import './support.css';
 
 export default function Support() {
   const [transactions, setTransactions] = useState([]);
@@ -44,7 +45,7 @@ export default function Support() {
   };
 
   return (
-    <>
+    <div className='transaction-container'>
       <button onClick={setupStripeOneTimePaymentSession}>
         One-Time Payment
       </button>
@@ -52,7 +53,7 @@ export default function Support() {
         Subscription
       </button> */}
 
-      {transactions.length > 0 && (
+      {transactions?.length > 0 && (
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 350 }} aria-label='simple table'>
             <TableHead>
@@ -86,7 +87,7 @@ export default function Support() {
           <button onClick={refreshTable}>Refresh</button>
         </TableContainer>
       )}
-    </>
+    </div>
   );
 }
 

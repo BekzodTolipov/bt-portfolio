@@ -56,7 +56,7 @@ function App() {
           <Route path='/support' element={<Support />} />
 
           <Route
-            path='/stripe-checkout/:purchaseResult'
+            path='/stripe-checkout/purchaseResult=:purchaseResult'
             element={<PurchaseConfirmation />}
           />
           {/* <Route path='/chess-game' element={<ChessApp />} /> */}
