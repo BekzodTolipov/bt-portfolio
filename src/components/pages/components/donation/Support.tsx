@@ -4,6 +4,7 @@ import {
   TableBody,
   TableCell,
   TableContainer,
+  TableFooter,
   TableHead,
   TableRow,
 } from '@mui/material';
@@ -13,10 +14,12 @@ import {
   redirectToCheckout,
   setupSession,
 } from '../../../helper/data/stripe/stipe';
+import SliderComponent from '../slider/SliderComponent';
 import './support.css';
 
 export default function Support() {
   const [transactions, setTransactions] = useState([]);
+  const [amount, setAmount] = useState(100);
 
   useEffect(() => {
     const getTransactionData = async () => {
@@ -29,7 +32,7 @@ export default function Support() {
   }, []);
 
   const setupStripeOneTimePaymentSession = async () => {
-    const session = await setupSession(true, 1000);
+    const session = await setupSession(true, amount);
 
     if (session) {
       redirectToCheckout(session);
@@ -46,47 +49,91 @@ export default function Support() {
 
   return (
     <div className='transaction-container'>
-      <button onClick={setupStripeOneTimePaymentSession}>
-        One-Time Payment
-      </button>
-      {/* <button onClick={setupStripeSubscriptionPaymentSession}>
+      <div className='row'>
+        <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12 support-header'>
+          <button
+            type='button'
+            className='btn btn-primary'
+            onClick={setupStripeOneTimePaymentSession}
+          >
+            One-Time Payment
+          </button>
+          {/* <button onClick={setupStripeSubscriptionPaymentSession}>
         Subscription
       </button> */}
 
-      {transactions?.length > 0 && (
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 350 }} aria-label='simple table'>
-            <TableHead>
-              <TableRow>
-                <TableCell>Transaction Status</TableCell>
-                <TableCell align='right'>Transaction ID</TableCell>
-                <TableCell align='right'>Amount</TableCell>
-                <TableCell align='right'>Transaction Date</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {transactions.map((transaction: Transaction, index) => (
-                <TableRow
-                  key={transaction._id + index.toString()}
-                  sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+          <div className='row'>
+            <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+              <SliderComponent setAmount={setAmount} />
+            </div>
+          </div>
+        </div>
+        <div className='col-sm-12 col-md-12 col-lg-12 col-xl-12'>
+          {transactions?.length > 0 && (
+            <Paper className='table-container'>
+              <div className='table-btn-header'>
+                <i
+                  onClick={refreshTable}
+                  className='fa-solid fa-arrows-rotate fa-2xl support-refresh-btn'
+                ></i>
+              </div>
+              <TableContainer>
+                <Table
+                  sx={{ minWidth: 350 }}
+                  size='small'
+                  aria-label='simple table'
                 >
-                  <TableCell component='th' scope='row'>
-                    {transaction.status}
-                  </TableCell>
-                  <TableCell align='right'>{transaction.purchaseId}</TableCell>
-                  <TableCell align='right'>
-                    ${(transaction.amount / 100).toString()}
-                  </TableCell>
-                  <TableCell align='right'>
-                    {transaction.purchaseDate.toString()}
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-          <button onClick={refreshTable}>Refresh</button>
-        </TableContainer>
-      )}
+                  <TableHead className='table-header'>
+                    <TableRow>
+                      <TableCell className='table-cell-header'>
+                        Transaction Status
+                      </TableCell>
+                      <TableCell className='table-cell-header' align='right'>
+                        Transaction ID
+                      </TableCell>
+                      <TableCell className='table-cell-header' align='right'>
+                        Amount
+                      </TableCell>
+                      <TableCell className='table-cell-header' align='right'>
+                        Transaction Date
+                      </TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody className='table-body'>
+                    {transactions.map((transaction: Transaction, index) => (
+                      <TableRow
+                        className='table-body-row'
+                        key={transaction._id + index.toString()}
+                        sx={{
+                          '&:last-child td, &:last-child th': { border: 0 },
+                        }}
+                      >
+                        <TableCell
+                          className='table-cell'
+                          component='th'
+                          scope='row'
+                        >
+                          {transaction.status}
+                        </TableCell>
+                        <TableCell className='table-cell' align='right'>
+                          {transaction.purchaseId}
+                        </TableCell>
+                        <TableCell className='table-cell' align='right'>
+                          ${(transaction.amount / 100).toString()}
+                        </TableCell>
+                        <TableCell className='table-cell' align='right'>
+                          {transaction.purchaseDate.toString()}
+                        </TableCell>
+                      </TableRow>
+                    ))}
+                  </TableBody>
+                  <TableFooter></TableFooter>
+                </Table>
+              </TableContainer>
+            </Paper>
+          )}
+        </div>
+      </div>
     </div>
   );
 }

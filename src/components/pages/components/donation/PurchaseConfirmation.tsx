@@ -1,18 +1,24 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './purchase-conformation.css';
 import TransactionConfirmationCard from './transaction-confirmation/transaction-confirmation';
+
 export default function PurchaseConfirmation() {
+  let navigate = useNavigate();
   let { purchaseResult } = useParams();
+
+  const redirectLink = () => {
+    navigate('/support');
+  };
 
   return (
     <div className='confirmation-container'>
-      <h1>Purchase Confirmation</h1>
-      {purchaseResult?.toLowerCase() === 'success' ? (
-        <TransactionConfirmationCard isFail={false} />
-      ) : (
-        <TransactionConfirmationCard isFail={true} />
-      )}
+      {
+        <TransactionConfirmationCard
+          isFail={purchaseResult?.toLowerCase() === 'success' ? false : true}
+          redirectLink={redirectLink}
+        />
+      }
     </div>
   );
 }

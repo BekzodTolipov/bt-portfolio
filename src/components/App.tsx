@@ -53,7 +53,7 @@ function App() {
           {/* Todo App */}
           <Route path='/todo-app' element={<TodoApp isAuth={isLoggedIn} />} />
 
-          <Route path='/support' element={<Support />} />
+          {isLoggedIn && <Route path='/support' element={<Support />} />}
 
           <Route
             path='/stripe-checkout/purchaseResult=:purchaseResult'

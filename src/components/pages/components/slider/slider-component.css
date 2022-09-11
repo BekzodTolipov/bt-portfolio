@@ -1,0 +1,18 @@
+.slider-container {
+  width: 100%;
+  padding: 1rem;
+  color: #fafafa;
+  background-color: rgba(13, 54, 187, 0.5);
+  margin: 0 auto;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  border-radius: 13px;
+}
+
+.slider-amount {
+  text-align: center;
+}
+
+.slider-section {
+  color: rgb(42, 196, 4);
+}

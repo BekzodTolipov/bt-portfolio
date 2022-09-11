@@ -2,4 +2,44 @@
   width: 80%;
   margin: 0 auto;
   margin-top: 2rem;
+  background-color: none;
+}
+
+.table-container {
+  background-color: transparent!important;
+}
+
+/* .table-container {
+  background-color: rgb(121, 118, 118);
+  
+} */
+
+.table-header {
+  background-color: rgb(43, 43, 43);
+}
+
+.table-body {
+  background-color: rgb(194, 193, 193);
+}
+
+.table-cell-header {
+  color: #fff!important;
+}
+
+
+.table-body-row:hover {
+  background-color: rgb(179, 138, 138);
+}
+
+.table-cell {
+  color: rgb(53, 53, 53)!important;
+}
+
+.table-btn-header {
+  margin-bottom: 1rem;
+}
+
+.support-refresh-btn:hover {
+  cursor: pointer;
+  zoom: 1.1;
 }
