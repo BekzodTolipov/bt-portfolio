@@ -72,7 +72,7 @@ const TodoListItems = (props) => {
   return (
     <>
       {currentTodo && (
-        <div className='todo-container'>
+        <div className='todo-list-container'>
           {props.isLoading && <h1>Loading...</h1>}
 
           {!props.isLoading && (

@@ -18,7 +18,7 @@ export default function SliderComponent(props) {
         className='slider-section'
         aria-label='Amount'
         onChange={changeAmount}
-        defaultValue={10}
+        defaultValue={1000}
         getAriaValueText={valuetext}
         valueLabelDisplay='auto'
         step={10}

@@ -44,10 +44,10 @@ export default function Projects() {
   return (
     <>
       <div className='project-container'>
-        <table className='table table-striped'>
+        <table className='table'>
           <thead>
-            <tr>
-              <th className='project-header'>Projects</th>
+            <tr className='project-header'>
+              <th>Work</th>
               <th></th>
             </tr>
           </thead>
@@ -56,16 +56,17 @@ export default function Projects() {
               return (
                 <tr key={project._id}>
                   <td>
-                    <a
-                      href='https://github.com/BekzodTolipov/OS'
-                      target='_blank'
-                      rel='noreferrer'
-                    >
-                      {project.title}
-                    </a>
-                  </td>
-                  <td>
-                    <ul>
+                    <h3>
+                      <a
+                        className='project-link'
+                        href={project.link}
+                        target='_blank'
+                        rel='noreferrer'
+                      >
+                        {project.title}
+                      </a>
+                    </h3>
+                    <ul className='project-list'>
                       {project.content.map((bodyContent, index) => {
                         return <li key={project._id + index}>{bodyContent}</li>;
                       })}
@@ -78,7 +79,7 @@ export default function Projects() {
         </table>
       </div>
 
-      <div className='project-container'>
+      {/* <div className='project-container'>
         <table className='table table-striped'>
           <thead>
             <tr>
@@ -103,7 +104,7 @@ export default function Projects() {
             })}
           </tbody>
         </table>
-      </div>
+      </div> */}
     </>
   );
 }

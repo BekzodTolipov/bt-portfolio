@@ -1,15 +1,21 @@
 .navbar-custom {
-    background-color: #456268;
+    background-color: #43C19F;
+}
+
+.container {
+    width: 100%;
 }
 
 .navbar-brand {
-    color: rgba(255,255,255,.6);
+    color: #193549;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 0.5rem;
 }
 
 /* Set the border color */
           
 .custom-toggler.navbar-toggler {
-    border-color: rgba(255,255,255,.6);
+    border-color: #193549;
 }
 
 .custom-toggler:focus {
@@ -20,43 +26,53 @@
 /* Setting the stroke to green using rgb values (0, 128, 0) */
   
 .custom-toggler .navbar-toggler-icon {
+    
     background-image: url(
-"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255,255,255,.6)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+"data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(25,53,73)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .navbar-brand:hover {
-    color: #ffffff;
+    color: #193549;
 }
 
 
-.navbar-custom .navbar-nav .nav-link {
-    color: rgba(255,255,255,.6);
+.nav-link {
+    color: #193549;
+    font-weight: bold;
+    text-decoration: none;
 }
 
-.navbar-custom .navbar-nav .nav-link {
-    color: rgba(255,255,255,.6);
+.nav-link.active {
+    color: #193549;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.nav-link:hover {
+    color: #193549;
+    text-decoration: none;
 }
 
 .navbar-custom .navbar-nav .dropdown-menu {
     padding: 0;
     border: none;
-    color: rgba(173, 172, 172, 0.6);
-    background-color: #456268;
+    color: #193549;
+    background-color: #43C19F;
 }
 
 .navbar-custom .navbar-nav .dropdown-menu .dropdown-item{
-    color: rgba(255,255,255,.6);
+    color: #193549;
 }
 
 .navbar-custom .navbar-nav .dropdown-menu .dropdown-item:hover{
-    color: #ffffff;
-    background-color: #456268;
+    color: #193549;
+    background-color: #43C19F;
     border: none;
 }
 
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-    color: #ffffff;
+    color: #193549;
 }
 
 .right-aligned {
@@ -67,8 +83,14 @@
     margin-top: 1rem;
 }
 
-.container {
-    padding-right: 0;
-    padding-left: 0;
-    max-width: 720px;;
+.login-btn {
+    background-color: #3BA78F;
+    border: none;
+    padding: 0.2rem 0.8rem;
+    margin-top: 0.3rem;
+    margin-left: 1.5rem;
+}
+
+.show .navbar-nav .login-btn {
+    background-color: #43C19F;
 }

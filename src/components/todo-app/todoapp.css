@@ -1,13 +1,14 @@
-.todo-container {
+.todo-app-container {
     margin: 0 auto;
-    width: 50%;
+    margin-top: 30px;
+    width: 90%;
 }
 
-.todo-card {
-    margin: 2rem auto;
+.todo-app-content {
+  width: 100%;
 }
 
-.todoAppBox {
-  width: 80%;
-  padding: 20px;
+.title {
+  color: #43C19F;
+  padding: 0.5em;
 }

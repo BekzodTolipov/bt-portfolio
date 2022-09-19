@@ -6,4 +6,25 @@
 
 .project-header {
     font-size: 22px;
+    color: #43C19F;
+    background-color: #23585E;
+}
+
+.table {
+    background-color: #193549;
+    border: none;
+}
+
+.project-link {
+    text-decoration: none;
+    color: #43C19F;
+}
+
+.project-link:hover {
+    color: #43C19F;
+}
+
+.project-list {
+    list-style-type: none;
+    color: #43C19F;
 }

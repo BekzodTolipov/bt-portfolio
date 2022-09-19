@@ -6,11 +6,9 @@ import { isAuthenticated } from './helper/connection/authentication';
 import About from './pages/components/about/About';
 import PurchaseConfirmation from './pages/components/donation/PurchaseConfirmation';
 import Support from './pages/components/donation/Support';
-import Hobbies from './pages/components/hobbies/Hobbies';
 import Login from './pages/components/login/Login';
 import ResetPassword from './pages/components/password-reset/Reset-Password';
 import Projects from './pages/components/project-education/Projects';
-import Footer from './partials/Footer';
 import Header from './partials/Header';
 import TodoApp from './todo-app/TodoApp';
 
@@ -66,8 +64,6 @@ function App() {
 
           <Route path='/about' element={<About />} />
 
-          <Route path='/hobbies' element={<Hobbies />} />
-
           {!isLoggedIn && (
             <Route
               path='/login'
@@ -80,7 +76,7 @@ function App() {
         {/* Routes End */}
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }

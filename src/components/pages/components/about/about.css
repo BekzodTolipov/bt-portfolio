@@ -1,0 +1,71 @@
+.about-container {
+  margin: 0 auto;
+  margin-top: 30px;
+  color: #43C19F;
+  width: 90%;
+/* 
+  opacity: 1;
+  filter: blur(0px);
+  transform: translateX(-100%, 0);
+  transition: all 1s;
+  transition-delay: 4000ms; */
+}
+
+.about-header {
+  background-color: #23585E;
+}
+
+.about-content {
+  margin-top: 30px;
+}
+
+.resume-link {
+  color: #43C19F;
+}
+
+.resume-link:hover {
+  color: #43C19F;
+}
+
+.title {
+  background-color: #23585E;
+  padding: 0.5em;
+}
+
+.connect-form {
+  width: 100%;
+}
+
+.connect-input {
+  width: 100%;
+  color: #43C19F;
+  background-color: #23585E;
+  border: none;
+}
+
+.connect-input::placeholder {
+  color: #43C19F;
+}
+
+.message {
+  margin-top: 10px;
+  margin-bottom: 0;
+  width: 100%;
+  color: #43C19F;
+  background-color: #23585E;
+  border: none;
+}
+
+.margin-reset {
+  margin-bottom: 0;
+}
+
+.connect-btn {
+  width: 100%;
+  background-color: #43C19F;
+}
+
+.headshot {
+  height: 100%;
+  width: 100%;
+}

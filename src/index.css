@@ -1,6 +1,4 @@
 body {
-    font-family: 'Inconsolata', monospace;
-    background-color: #fcf8ec;
-    background-image: url("https://www.transparenttextures.com/patterns/black-linen.png");
-    background-attachment: fixed;
+    font-family: arial, sans-serif; 
+    background-color: #193549;
 }

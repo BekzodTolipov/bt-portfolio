@@ -35,7 +35,7 @@ import './login.css';
 const theme = createTheme({
   palette: {
     background: {
-      default: 'rgba(137, 170, 171, 0.8)',
+      default: '#193549',
     },
   },
 });

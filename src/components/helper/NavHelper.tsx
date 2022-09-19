@@ -4,47 +4,59 @@ import { Link } from 'react-router-dom';
 function NavList(isLoggedIn: boolean, logoutProcess) {
   return [
     {
-      name: 'About',
+      name: 'Work',
+      link: 'projects',
+      class: 'nav-link',
       subList: [],
-      isDisplay: false,
+      isDisplay: true,
     },
     {
-      name: 'Projects',
+      name: 'Play',
+      link: 'projects',
+      class: 'nav-link',
       subList: ['Todo-App'],
       isDisplay: true,
     },
     {
-      name: 'Hobbies',
+      name: 'About',
+      link: 'about',
+      class: 'nav-link',
       subList: [],
-      isDisplay: false,
+      isDisplay: true,
     },
-
     {
-      name: 'Blockbuster',
+      name: 'Hobbies',
+      link: 'hobbies',
+      class: 'nav-link',
       subList: [],
       isDisplay: false,
     },
-
+    {
+      name: 'Support',
+      link: 'support',
+      class: 'nav-link',
+      subList: [],
+      isDisplay: isLoggedIn,
+    },
     {
       name: 'Logout',
+      link: 'logout',
+      class: 'nav-link login-btn',
       subList: [],
       isDisplay: isLoggedIn,
       onClick: logoutProcess,
     },
     {
       name: 'Login',
+      link: 'login',
+      class: 'nav-link login-btn',
       subList: [],
       isDisplay: !isLoggedIn,
-    },
-    {
-      name: 'Support',
-      subList: [],
-      isDisplay: isLoggedIn,
     },
   ];
 }
 
-function CreateNavLink(link, index: any) {
+function CreateNavLink(link, index: any, _handleCollapse) {
   function withoutSubList() {
     return (
       <li
@@ -53,14 +65,15 @@ function CreateNavLink(link, index: any) {
             localStorage.removeItem('user');
             link.onClick(false);
           }
+          _handleCollapse();
         }}
         key={index}
         className='nav-item'
       >
         <Link
-          className={index === 0 ? 'nav-link active' : 'nav-link'}
+          className={index === 0 ? link.class + ' active' : link.class}
           aria-current='page'
-          to={getLink(link.name)}
+          to={link.link}
         >
           {link.name}
         </Link>
@@ -87,7 +100,7 @@ function CreateNavLink(link, index: any) {
         >
           {link.subList.map((sub, index) => {
             return (
-              <li key={link.name + index}>
+              <li key={link.name + index} onClick={_handleCollapse}>
                 <Link className='dropdown-item' to={`/${sub.toLowerCase()}`}>
                   {sub}
                 </Link>
@@ -100,14 +113,6 @@ function CreateNavLink(link, index: any) {
   }
 
   return link.subList.length === 0 ? withoutSubList() : withSubList();
-}
-
-function getLink(name: string) {
-  if (name.toLowerCase() === 'logout') {
-    return '/';
-  }
-
-  return `/${name.toLowerCase()}`;
 }
 
 export { NavList, CreateNavLink };
