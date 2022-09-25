@@ -54,8 +54,8 @@ export default function Projects() {
           <tbody>
             {data.projects.map((project: any) => {
               return (
-                <tr key={project._id}>
-                  <td>
+                <tr key={project._id} className='project-row'>
+                  <td className='project-section'>
                     <h3>
                       <a
                         className='project-link'

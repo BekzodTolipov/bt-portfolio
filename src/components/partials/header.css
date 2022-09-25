@@ -7,9 +7,11 @@
 }
 
 .navbar-brand {
+    font-weight: bold;
     color: #193549;
-    border: 1px solid rgb(0, 0, 0);
-    padding: 0.5rem;
+    border: 3px solid rgb(0, 0, 0);
+    padding: 0.7rem;
+    margin: .5rem;
 }
 
 /* Set the border color */
@@ -40,6 +42,7 @@
     color: #193549;
     font-weight: bold;
     text-decoration: none;
+    margin-left: 2rem;
 }
 
 .nav-link.active {
@@ -53,6 +56,10 @@
     text-decoration: none;
 }
 
+.navbar-nav {
+    font-size: 1.3rem;
+}
+
 .navbar-custom .navbar-nav .dropdown-menu {
     padding: 0;
     border: none;
@@ -60,8 +67,11 @@
     background-color: #43C19F;
 }
 
+
+
 .navbar-custom .navbar-nav .dropdown-menu .dropdown-item{
     color: #193549;
+    font-weight: bold;
 }
 
 .navbar-custom .navbar-nav .dropdown-menu .dropdown-item:hover{
@@ -75,6 +85,11 @@
     color: #193549;
 }
 
+.nav-sublist {
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+
 .right-aligned {
     text-align: right;
 }
@@ -84,11 +99,10 @@
 }
 
 .login-btn {
+    text-align: center;
     background-color: #3BA78F;
     border: none;
-    padding: 0.2rem 0.8rem;
-    margin-top: 0.3rem;
-    margin-left: 1.5rem;
+    width: 100%;
 }
 
 .show .navbar-nav .login-btn {

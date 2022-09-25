@@ -100,7 +100,11 @@ function CreateNavLink(link, index: any, _handleCollapse) {
         >
           {link.subList.map((sub, index) => {
             return (
-              <li key={link.name + index} onClick={_handleCollapse}>
+              <li
+                key={link.name + index}
+                className='nav-sublist'
+                onClick={_handleCollapse}
+              >
                 <Link className='dropdown-item' to={`/${sub.toLowerCase()}`}>
                   {sub}
                 </Link>

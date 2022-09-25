@@ -12,17 +12,36 @@ export default function About() {
           <div className='row'>
             <div className='col-sm-12'>
               <p>
-                Hi, I am Bekzod Tolipov and I want to thank you for taking you
-                time to visit my portfolio. I earned my Bachelor degree in
-                Computer Science from University of Missouri - STL in May, 2020.
-                I have a broad understanding of core principles of programming
-                and am still excited to explore new technologies. You can find
-                my GitHub variety repositories in the Work page of this website
-                where I have demonstrated projects in C, C++, Java, and Python.
-                Therefore, I have worked in a team of brilliant developers to
-                build Full Stack applications using different frameworks. I
-                can't wait to connect with you and get to know each other.
+                Hi there! My name is Bekzod “Bek” Tolipov and I am a developer
+                based in Austin, Texas. I have a passion for learning and am
+                experienced with working on projects across a variety of
+                industries. From transportation to healthcare and everything in
+                between, I have played a key role in developing projects and
+                concepts into real world assets. Angular, Spring Boot,
+                Salesforce, and AWS are just the tip of the iceberg when it
+                comes to what I can do. I have assisted in building companies
+                from the ground up, partnered with strategic stakeholders such
+                as Walmart, UPS, and Fedex, in addition to having implemented
+                flexible solutions across platforms.
               </p>
+              {/* <p>
+                <a className='icons' href='https://github.com/BekzodTolipov'>
+                  <i
+                    className='fa-brands fa-github fa-2x'
+                    style={{ color: 'black' }}
+                  ></i>
+                </a>
+
+                <a
+                  className='icons'
+                  href='https://www.linkedin.com/in/bekzod-tolipov-225913119/'
+                >
+                  <i
+                    className='fa-brands fa-linkedin fa-2x'
+                    style={{ color: '#0077B5' }}
+                  ></i>
+                </a>
+              </p> */}
 
               <a
                 className='resume-link'
@@ -39,7 +58,8 @@ export default function About() {
                 </div>
 
                 <div className='col-sm-12'>
-                  <div className='connect-form'>
+                  <a href='mailto:btolipov211@outlook.com'>Send Email</a>
+                  {/* <div className='connect-form'>
                     <div className='row'>
                       <div className='col-sm-3'>
                         <input
@@ -77,7 +97,7 @@ export default function About() {
                         <button className='btn connect-btn'>Submit</button>
                       </div>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

@@ -1,13 +1,19 @@
 .project-container {
     background-color: #fcf8ec;
-    width: 80%;
-    margin: 100px auto;
+    margin-left: 4.4rem;
+    margin-right: 2rem;
+    margin-top: 3rem;
 }
 
 .project-header {
-    font-size: 22px;
+    font-size: 1.3rem;
     color: #43C19F;
     background-color: #23585E;
+}
+
+.project-header th {
+    border: none;
+    padding: 1rem;
 }
 
 .table {
@@ -18,13 +24,28 @@
 .project-link {
     text-decoration: none;
     color: #43C19F;
+    font-size: 1.2rem;
+    font-weight: bold;
 }
 
 .project-link:hover {
     color: #43C19F;
+
+}
+
+.project-section {
+    border: none;
+    padding: 2rem 2rem 0rem 0 !important;
 }
 
 .project-list {
     list-style-type: none;
     color: #43C19F;
+    margin-bottom: 0;
+    padding-left: 0;
+    /* padding: 1rem 2rem 2rem 0 !important; */
+}
+
+.project-list li {
+    margin-bottom: 1rem;
 }

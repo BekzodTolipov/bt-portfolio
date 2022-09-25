@@ -1,8 +1,8 @@
 .about-container {
-  margin: 0 auto;
-  margin-top: 30px;
+  margin-left: 4.4rem;
+  margin-right: 2rem;
+  margin-top: 3rem;
   color: #43C19F;
-  width: 90%;
 /* 
   opacity: 1;
   filter: blur(0px);
@@ -29,7 +29,8 @@
 
 .title {
   background-color: #23585E;
-  padding: 0.5em;
+  padding: 1rem;
+  font-size: 1.3rem;
 }
 
 .connect-form {
